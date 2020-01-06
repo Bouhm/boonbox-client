@@ -1,8 +1,8 @@
-import React from "react";
-import "./App.css";
+import React from 'react'
+import Editor from './editor/Editor'
 
 const App: React.FC = () => {
-  return <div className="App" />;
-};
+  return <div className='App' />
+}
 
-export default App;
+export default App
