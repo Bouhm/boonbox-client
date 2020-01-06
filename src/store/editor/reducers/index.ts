@@ -17,6 +17,7 @@ const editorReducer = (state = initialState, action: EditorActionTypes) => {
     case 'REMOVE_BACKGROUND':
       return { ...state, backgroundImg: '' }
     default:
+      return state
   }
 }
 
