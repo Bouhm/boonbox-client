@@ -1,16 +1,19 @@
 import React, { useState } from 'react'
 
-const useInput = (initialValue = {}) => {
+const useForm = (initialValue = {}) => {
   const [formData, setFormData] = useState(initialValue)
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFormChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.currentTarget.name]: e.currentTarget.value })
   }
 
+  const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {}
+
   return {
     formData,
-    handleInputChange
+    handleFormChange,
+    handleFormSubmit
   }
 }
 
-export default useInput
+export default useForm

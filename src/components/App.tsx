@@ -1,5 +1,5 @@
 import React from 'react'
-import Editor from './editor/Editor'
+import Board from './board/Board'
 
 const App: React.FC = () => {
   return <div className='App' />

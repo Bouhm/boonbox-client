@@ -2,13 +2,13 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
 import { createStore } from 'redux'
-import editorReducer from './store/editor/editorReducer'
+import boardReducer from './store/board/reducers'
 
 import App from './components/App'
 import * as serviceWorker from './serviceWorker'
 
 ReactDOM.render(
-  <Provider store={createStore(editorReducer)}>
+  <Provider store={createStore(boardReducer)}>
     <App />
   </Provider>,
   document.getElementById('root')

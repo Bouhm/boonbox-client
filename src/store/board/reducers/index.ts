@@ -1,16 +1,16 @@
-import { EditorActionTypes } from '../types'
+import { BoardActionTypes } from '../types'
 
-interface EditorState {
+interface BoardState {
   backgroundImg: string
   selectedLayer: number
 }
 
-const initialState: EditorState = {
+const initialState: BoardState = {
   backgroundImg: '',
   selectedLayer: 0
 }
 
-const editorReducer = (state = initialState, action: EditorActionTypes) => {
+const boardReducer = (state = initialState, action: BoardActionTypes) => {
   switch (action.type) {
     case 'CHANGE_BACKGROUND':
       return { ...state, backgroundImg: action.payload }
@@ -21,4 +21,4 @@ const editorReducer = (state = initialState, action: EditorActionTypes) => {
   }
 }
 
-export default editorReducer
+export default boardReducer

@@ -8,4 +8,4 @@ interface RemoveBackgroundAction {
   payload: string
 }
 
-export type EditorActionTypes = ChangeBackgroundAction | RemoveBackgroundAction
+export type BoardActionTypes = ChangeBackgroundAction | RemoveBackgroundAction
