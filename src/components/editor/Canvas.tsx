@@ -1,9 +1,9 @@
-import React from "react";
+import React from 'react'
 
 interface CanvasProps {}
 
 const Canvas = (props: any) => {
-  return <div />;
-};
+  return <div />
+}
 
-export default Canvas;
+export default Canvas
