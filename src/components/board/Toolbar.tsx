@@ -1,8 +1,10 @@
-import React, { useState } from 'react'
-import Input from '../form/Input'
-import Label from '../form/Label'
+import React, { useState } from 'react';
+import styled from 'styled-components';
 
-type ToolbarProps = {}
+import Input from '../form/Input';
+import Label from '../form/Label';
+
+type ToolbarProps = {};
 
 const Toolbar = (props: any) => {
   return (
@@ -10,7 +12,7 @@ const Toolbar = (props: any) => {
       <Label>Background:</Label>
       <Input />
     </div>
-  )
-}
+  );
+};
 
-export default Toolbar
+export default Toolbar;

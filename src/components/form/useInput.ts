@@ -1,17 +1,17 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 
-type Value = string | string[] | number | undefined
+type Value = string | string[] | number | undefined;
 const useInput = (initialValue = undefined) => {
-  const [inputVal, setInputVal] = useState<Value>(initialValue)
+  const [inputVal, setInputVal] = useState<Value>(initialValue);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setInputVal(e.currentTarget.value)
-  }
+    setInputVal(e.currentTarget.value);
+  };
 
   return {
     inputVal,
-    handleInputChange
-  }
-}
+    handleInputChange,
+  };
+};
 
-export default useInput
+export default useInput;

@@ -1,5 +1,5 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
-const Label = styled.label``
+const Label = styled.label``;
 
-export default Label
+export default Label;
