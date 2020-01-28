@@ -3,8 +3,6 @@ import React, { useCallback, useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 
 type CanvasProps = {
-  width: number;
-  height: number;
   bgImgUrl: string;
 };
 
@@ -14,13 +12,16 @@ type Coordinate = {
 };
 
 const CanvasContainer = styled.div<any>`
-    background-image: ${props => `url(${props.bgImgUrl})`};
-    background-size: cover;              
-    background-repeat: no-repeat;
-    background-position: center center;
+  background-image: ${props => `url(${props.bgImgUrl})`};
+  background-size: cover;              
+  background-repeat: no-repeat;
+  background-position: center center;
 `;
 
-const Canvas = ({ width, height, bgImgUrl }: CanvasProps) => {
+const Canvas = ({ bgImgUrl }: CanvasProps) => {
+  const width = window.innerWidth;
+  const height = window.innerHeight;
+
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [isPainting, setIsPainting] = useState(false);
   const [mousePosition, setMousePosition] = useState<Coordinate | undefined>(undefined);
@@ -28,8 +29,8 @@ const Canvas = ({ width, height, bgImgUrl }: CanvasProps) => {
   const startPaint = useCallback((event: MouseEvent) => {
     const coordinates = getCoordinates(event);
     if (coordinates) {
-      setMousePosition(coordinates);
-      setIsPainting(true);
+        setMousePosition(coordinates);
+        setIsPainting(true);
     }
   }, []);
 
@@ -37,6 +38,7 @@ const Canvas = ({ width, height, bgImgUrl }: CanvasProps) => {
     if (!canvasRef.current) {
       return;
     }
+
     const canvas: HTMLCanvasElement = canvasRef.current;
     canvas.addEventListener('mousedown', startPaint);
     return () => {
@@ -61,6 +63,7 @@ const Canvas = ({ width, height, bgImgUrl }: CanvasProps) => {
     if (!canvasRef.current) {
       return;
     }
+
     const canvas: HTMLCanvasElement = canvasRef.current;
     canvas.addEventListener('mousemove', paint);
     return () => {
@@ -77,6 +80,7 @@ const Canvas = ({ width, height, bgImgUrl }: CanvasProps) => {
     if (!canvasRef.current) {
       return;
     }
+
     const canvas: HTMLCanvasElement = canvasRef.current;
     canvas.addEventListener('mouseup', exitPaint);
     canvas.addEventListener('mouseleave', exitPaint);
@@ -116,11 +120,6 @@ const Canvas = ({ width, height, bgImgUrl }: CanvasProps) => {
   };
 
 return <CanvasContainer bgImgUrl={bgImgUrl}><canvas ref={canvasRef} height={height} width={width} /></CanvasContainer>;
-};
-
-Canvas.defaultProps = {
-  width: window.innerWidth,
-  height: window.innerHeight,
 };
 
 export default Canvas;
