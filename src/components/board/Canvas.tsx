@@ -1,9 +1,11 @@
 // Adapted from https://dev.to/ankursheel/react-component-to-fraw-on-a-page-using-hooks-and-typescript-2ahp
 import React, { useCallback, useEffect, useRef, useState } from 'react';
+import styled from 'styled-components';
 
 type CanvasProps = {
   width: number;
   height: number;
+  bgImgUrl: string;
 };
 
 type Coordinate = {
@@ -11,7 +13,14 @@ type Coordinate = {
   y: number;
 };
 
-const Canvas = ({ width, height }: CanvasProps) => {
+const CanvasContainer = styled.div<any>`
+    background-image: ${props => `url(${props.bgImgUrl})`};
+    background-size: cover;              
+    background-repeat: no-repeat;
+    background-position: center center;
+`;
+
+const Canvas = ({ width, height, bgImgUrl }: CanvasProps) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [isPainting, setIsPainting] = useState(false);
   const [mousePosition, setMousePosition] = useState<Coordinate | undefined>(undefined);
@@ -106,7 +115,7 @@ const Canvas = ({ width, height }: CanvasProps) => {
     }
   };
 
-  return <canvas ref={canvasRef} height={height} width={width} />;
+return <CanvasContainer bgImgUrl={bgImgUrl}><canvas ref={canvasRef} height={height} width={width} /></CanvasContainer>;
 };
 
 Canvas.defaultProps = {
