@@ -1,6 +1,6 @@
 import React from 'react'
 
-interface BoardProps {}
+type BoardProps = {}
 
 const Board = (props: any) => {
   return <div />

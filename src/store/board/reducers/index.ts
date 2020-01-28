@@ -1,6 +1,6 @@
 import { BoardActionTypes } from '../types'
 
-interface BoardState {
+type BoardState = {
   backgroundImg: string
   selectedLayer: number
 }

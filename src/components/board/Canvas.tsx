@@ -1,6 +1,6 @@
 import React from 'react'
 
-interface CanvasProps {}
+type CanvasProps = {}
 
 const Canvas = (props: any) => {
   return <div />
