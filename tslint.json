@@ -16,6 +16,7 @@
     "variable-name": {
       "options": ["ban-keywords", "check-format", "allow-leading-underscore", "allow-pascal-case"]
     },
-    "react-hooks-nesting": true
+    "react-hooks-nesting": true,
+    "trailing-comma": false
   }
 }

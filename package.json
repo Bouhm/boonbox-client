@@ -50,7 +50,7 @@
   },
   "prettier": {
     "singleQuote": true,
-    "trailingComma": "es5",
+    "trailingComma": "es6",
     "printWidth": 120
   }
 }

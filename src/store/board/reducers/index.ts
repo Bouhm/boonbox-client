@@ -1,21 +1,21 @@
 import { BoardActionTypes } from '../types';
 
 type BoardState = {
-  backgroundImg: string;
+  bgImgUrl: string;
   selectedLayer: number;
 };
 
 const initialState: BoardState = {
-  backgroundImg: '',
+  bgImgUrl: '',
   selectedLayer: 0,
 };
 
 const boardReducer = (state = initialState, action: BoardActionTypes) => {
   switch (action.type) {
     case 'CHANGE_BACKGROUND':
-      return { ...state, backgroundImg: action.payload };
+      return { ...state, bgImgUrl: action.payload };
     case 'REMOVE_BACKGROUND':
-      return { ...state, backgroundImg: '' };
+      return { ...state, bgImgUrl: '' };
     default:
       return state;
   }
