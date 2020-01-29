@@ -1,3 +1,5 @@
+import { combineReducers } from 'redux';
+
 import { BoardActionTypes, CanvasActionTypes, ToolbarActionTypes } from '../types';
 import { BoardProps } from '../../../components/board/Board';
 import { PieceProps } from '../../../components/board/Piece';
@@ -69,4 +71,8 @@ const toolbarReducer = (state = initialState, action: ToolbarActionTypes) => {
   }
 };
 
-export default boardReducer;
+export default combineReducers({
+  board: boardReducer,
+  canvas: canvasReducer,
+  toolbar: toolbarReducer
+});
