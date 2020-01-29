@@ -1,9 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 
-type BoardProps = {};
+export type BoardProps = {
 
-const Board = (props: any) => {
+};
+
+const Board = (props: BoardProps) => {
   return <div />;
 };
 

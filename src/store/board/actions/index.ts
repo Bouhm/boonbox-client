@@ -1,15 +1,22 @@
-import { BoardActionTypes } from '../types';
+import { BoardActionTypes, CanvasActionTypes, ToolbarActionTypes } from '../types';
 
-export const changeBackground = (imgUrl: string): BoardActionTypes => {
+export const changeBackground = (imgUrl: string): CanvasActionTypes => {
   return {
     type: 'CHANGE_BACKGROUND',
-    payload: imgUrl,
+    payload: '',
   };
 };
 
-export const removeBackground = (): BoardActionTypes => {
+export const removeBackground = (): CanvasActionTypes => {
   return {
     type: 'REMOVE_BACKGROUND',
     payload: '',
   };
 };
+
+export const updateBoard = (): BoardActionTypes => {
+  return {
+    type: 'UPDATE_BOARD',
+    payload: []
+  }
+}
