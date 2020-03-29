@@ -1,15 +1,16 @@
-import Moveable from 'react-moveable';
+import Moveable, { OnDrag, OnResize, OnScale, OnRotate } from 'react-moveable';
 import React from 'react';
-// import styled from 'styled-components';
 
 export type PieceProps = {
 
 };
 
+let matrix: number[];
+
 const Piece: React.FC = (props: PieceProps) => {
   return (
     <Moveable
-      target={document.querySelector(".target")}
+      target={document.querySelector('.piece') as SVGElement}
       container={null}
       origin={true}
 
@@ -20,7 +21,7 @@ const Piece: React.FC = (props: PieceProps) => {
       draggable={true}
       throttleDrag={0}
       onDragStart={({ target, clientX, clientY }) => {
-          console.log("onDragStart", target);
+        console.log('onDragStart', target);
       }}
       onDrag={({
           target,
@@ -31,14 +32,14 @@ const Piece: React.FC = (props: PieceProps) => {
           transform,
           clientX, clientY,
       }: OnDrag) => {
-          console.log("onDrag left, top", left, top);
+        console.log('onDrag left, top', left, top);
           // target!.style.left = `${left}px`;
           // target!.style.top = `${top}px`;
-          console.log("onDrag translate", dist);
-          target!.style.transform = transform;
+        console.log('onDrag translate', dist);
+        target!.style.transform = transform;
       }}
       onDragEnd={({ target, isDrag, clientX, clientY }) => {
-          console.log("onDragEnd", target, isDrag);
+        console.log('onDragEnd', target, isDrag);
       }}
 
       /* When resize or scale, keeps a ratio of the width, height. */
@@ -48,20 +49,20 @@ const Piece: React.FC = (props: PieceProps) => {
       /* Only one of resizable, scalable, warpable can be used. */
       resizable={true}
       throttleResize={0}
-      onResizeStart={({ target , clientX, clientY}) => {
-          console.log("onResizeStart", target);
+      onResizeStart={({ target , clientX, clientY }) => {
+        console.log('onResizeStart', target);
       }}
       onResize={({
           target, width, height,
           dist, delta, direction,
           clientX, clientY,
       }: OnResize) => {
-          console.log("onResize", target);
-          delta[0] && (target!.style.width = `${width}px`);
-          delta[1] && (target!.style.height = `${height}px`);
+        console.log('onResize', target);
+        delta[0] && (target!.style.width = `${width}px`);
+        delta[1] && (target!.style.height = `${height}px`);
       }}
       onResizeEnd={({ target, isDrag, clientX, clientY }) => {
-          console.log("onResizeEnd", target, isDrag);
+        console.log('onResizeEnd', target, isDrag);
       }}
 
       /* scalable */
@@ -69,36 +70,36 @@ const Piece: React.FC = (props: PieceProps) => {
       scalable={true}
       throttleScale={0}
       onScaleStart={({ target, clientX, clientY }) => {
-          console.log("onScaleStart", target);
+        console.log('onScaleStart', target);
       }}
       onScale={({
           target, scale, dist, delta, transform,
           clientX, clientY,
       }: OnScale) => {
-          console.log("onScale scale", scale);
-          target!.style.transform = transform;
+        console.log('onScale scale', scale);
+        target!.style.transform = transform;
       }}
       onScaleEnd={({ target, isDrag, clientX, clientY }) => {
-          console.log("onScaleEnd", target, isDrag);
+        console.log('onScaleEnd', target, isDrag);
       }}
 
       /* rotatable */
       rotatable={true}
       throttleRotate={0}
       onRotateStart={({ target, clientX, clientY }) => {
-          console.log("onRotateStart", target);
+        console.log('onRotateStart', target);
       }}
       onRotate={({
           target,
           delta, dist,
           transform,
           clientX, clientY,
-      }: onRotate) => {
-          console.log("onRotate", dist);
-          target!.style.transform = transform;
+      }: OnRotate) => {
+        console.log('onRotate', dist);
+        target!.style.transform = transform;
       }}
       onRotateEnd={({ target, isDrag, clientX, clientY }) => {
-          console.log("onRotateEnd", target, isDrag);
+        console.log('onRotateEnd', target, isDrag);
       }}
 
       /* warpable */
@@ -113,7 +114,7 @@ const Piece: React.FC = (props: PieceProps) => {
       */
       warpable={true}
       onWarpStart={({ target, clientX, clientY }) => {
-          console.log("onWarpStart", target);
+        console.log('onWarpStart', target);
       }}
       onWarp={({
           target,
@@ -124,13 +125,13 @@ const Piece: React.FC = (props: PieceProps) => {
           multiply,
           transform,
       }) => {
-          console.log("onWarp", target);
+        console.log('onWarp', target);
           // target.style.transform = transform;
-          this.matrix = multiply(this.matrix, delta);
-          target.style.transform = `matrix3d(${this.matrix.join(",")})`;
+        matrix = multiply(matrix, delta);
+        target.style.transform = `matrix3d(${matrix.join(',')})`;
       }}
       onWarpEnd={({ target, isDrag, clientX, clientY }) => {
-          console.log("onWarpEnd", target, isDrag);
+        console.log('onWarpEnd', target, isDrag);
       }}
 
       // Enabling pinchable lets you use events that
@@ -138,18 +139,18 @@ const Piece: React.FC = (props: PieceProps) => {
       pinchable={true}
       onPinchStart={({ target, clientX, clientY, datas }) => {
           // pinchStart event occur before dragStart, rotateStart, scaleStart, resizeStart
-          console.log("onPinchStart");
+        console.log('onPinchStart');
       }}
       onPinch={({ target, clientX, clientY, datas }) => {
           // pinch event occur before drag, rotate, scale, resize
-          console.log("onPinch");
+        console.log('onPinch');
       }}
       onPinchEnd={({ isDrag, target, clientX, clientY, datas }) => {
           // pinchEnd event occur before dragEnd, rotateEnd, scaleEnd, resizeEnd
-          console.log("onPinchEnd");
+        console.log('onPinchEnd');
       }}
   />
-  )
+  );
 };
 
 export default Piece;

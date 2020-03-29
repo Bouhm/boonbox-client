@@ -1,6 +1,5 @@
 // Adapted from https://dev.to/ankursheel/react-component-to-fraw-on-a-page-using-hooks-and-typescript-2ahp
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-import styled from 'styled-components';
 
 type CanvasProps = {
   bgImgUrl: string;
@@ -10,13 +9,6 @@ type Coordinate = {
   x: number;
   y: number;
 };
-
-const CanvasContainer = styled.div<any>`
-  background-image: ${props => `url(${props.bgImgUrl})`};
-  background-size: cover;              
-  background-repeat: no-repeat;
-  background-position: center center;
-`;
 
 const Canvas = ({ bgImgUrl }: CanvasProps) => {
   const width = window.innerWidth;
@@ -29,8 +21,8 @@ const Canvas = ({ bgImgUrl }: CanvasProps) => {
   const startPaint = useCallback((event: MouseEvent) => {
     const coordinates = getCoordinates(event);
     if (coordinates) {
-        setMousePosition(coordinates);
-        setIsPainting(true);
+      setMousePosition(coordinates);
+      setIsPainting(true);
     }
   }, []);
 
@@ -84,6 +76,7 @@ const Canvas = ({ bgImgUrl }: CanvasProps) => {
     const canvas: HTMLCanvasElement = canvasRef.current;
     canvas.addEventListener('mouseup', exitPaint);
     canvas.addEventListener('mouseleave', exitPaint);
+
     return () => {
       canvas.removeEventListener('mouseup', exitPaint);
       canvas.removeEventListener('mouseleave', exitPaint);
@@ -119,7 +112,11 @@ const Canvas = ({ bgImgUrl }: CanvasProps) => {
     }
   };
 
-return <CanvasContainer bgImgUrl={bgImgUrl}><canvas ref={canvasRef} height={height} width={width} /></CanvasContainer>;
+  return (
+  <CanvasContainer bgImgUrl={bgImgUrl}>
+    <canvas ref={canvasRef} height={height} width={width} />
+  </CanvasContainer>
+  );
 };
 
 export default Canvas;
