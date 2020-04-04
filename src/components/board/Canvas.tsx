@@ -1,5 +1,6 @@
 // Adapted from https://dev.to/ankursheel/react-component-to-fraw-on-a-page-using-hooks-and-typescript-2ahp
 import React, { useCallback, useEffect, useRef, useState } from 'react';
+import _Moveable from "./Moveable";
 
 type CanvasProps = {
   bgImgUrl: string;
@@ -113,9 +114,11 @@ const Canvas = ({ bgImgUrl }: CanvasProps) => {
   };
 
   return (
-  <CanvasContainer bgImgUrl={bgImgUrl}>
-    <canvas ref={canvasRef} height={height} width={width} />
-  </CanvasContainer>
+    <div>
+      <_Moveable target=".text" />
+      <div className="text">height</div>
+      <canvas ref={canvasRef} height={height} width={width} />
+    </div>
   );
 };
 
