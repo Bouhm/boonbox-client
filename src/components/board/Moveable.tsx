@@ -2,13 +2,15 @@ import Moveable, { OnDrag, OnResize, OnScale, OnRotate } from 'react-moveable';
 import React from 'react';
 
 export type MoveableProps = {
-  target: string
+  ref: React.MutableRefObject<any>
+  target: HTMLElement | SVGElement
 };
 
-const _Moveable = (props: MoveableProps) => {
+const _Moveable = ({ref, target}: MoveableProps) => {
   return (
     <Moveable
-      target={document.querySelector(props.target) as SVGElement}
+      ref={ref}
+      target={target}
       container={null}
       origin={true}
 
