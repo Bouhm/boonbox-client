@@ -5,16 +5,29 @@ import './Board.css';
 export type BoardProps = {};
 
 const Board = (props: BoardProps) => {
-  const [target, setTarget] = useState<HTMLElement>();
+  const [target, setTarget] = useState<string>();
 
-  useEffect(() => {
-    setTarget(document.querySelector('.moveable') as HTMLElement);
-  }, []);
+  const handleClickTarget = (e: React.MouseEvent) => {
+    const classList = e.currentTarget.classList;
+    let className = '';
+
+    for (let i = 0; i < classList.length; i++) {
+      className += `.${classList[i]}`;
+    }
+
+    setTarget(className);
+  };
+
+  const handleLoseFocus = () => {
+    setTarget('');
+  };
 
   return (
     <div>
-      <_Moveable target={target} />
-      <div className="moveable">HENLO</div>
+      <_Moveable target={document.querySelector(`${target}`) as HTMLElement} />
+      <div className="text moveable" onClick={handleClickTarget} onBlur={handleLoseFocus}>
+        HENLO
+      </div>
     </div>
   );
 };

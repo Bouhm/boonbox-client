@@ -1,3 +1,7 @@
 .moveable {
   display: inline-block;
 }
+
+.moveable:hover {
+  cursor: pointer;
+}

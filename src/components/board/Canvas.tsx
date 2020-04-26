@@ -1,4 +1,3 @@
-// Adapted from https://dev.to/ankursheel/react-component-to-fraw-on-a-page-using-hooks-and-typescript-2ahp
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 
 type CanvasProps = {
