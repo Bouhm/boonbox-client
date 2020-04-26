@@ -22,6 +22,8 @@ const Board = (props: BoardProps) => {
     setTarget('');
   };
 
+  console.log(target);
+
   return (
     <div>
       <_Moveable target={document.querySelector(`${target}`) as HTMLElement} />
