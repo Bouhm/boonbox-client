@@ -22,12 +22,10 @@ const Board = (props: BoardProps) => {
     setTarget('');
   };
 
-  console.log(target);
-
   return (
     <div>
-      <_Moveable target={document.querySelector(`${target}`) as HTMLElement} />
-      <div className="text moveable" onClick={handleClickTarget} onBlur={handleLoseFocus}>
+      {target && <_Moveable target={document.querySelector(`${target}`) as HTMLElement} />}
+      <div tabIndex={0} className="text moveable" onClick={handleClickTarget} onBlur={handleLoseFocus}>
         HENLO
       </div>
     </div>

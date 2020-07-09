@@ -5,3 +5,7 @@
 .moveable:hover {
   cursor: pointer;
 }
+
+.moveable:focus {
+  outline: none;
+}

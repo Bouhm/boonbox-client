@@ -2,9 +2,17 @@ import React, { useState } from 'react';
 
 import Input from '../form/Input';
 
-type ToolbarProps = {};
+type ToolbarProps = {
+  isOpen: boolean;
+};
 
-const Toolbar = (props: any) => {
+type ToolbarState = {
+  tabIndex: number;
+};
+
+const Toolbar = ({ isOpen }: ToolbarProps) => {
+  if (!isOpen) return null;
+
   return (
     <div>
       <label>Background:</label>
