@@ -1,15 +1,14 @@
 import React from 'react';
 
-type ObjectProps = {};
+export type ObjectProps = {};
+type ObjectsProps = {};
 
 const Object = (props: ObjectProps) => {
   return <div />;
 };
 
-type ObjectsProps = {};
-
 const Objects = () => {
-  return <div />;
+  return <Object />;
 };
 
 export default Objects;

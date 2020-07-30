@@ -2,7 +2,7 @@ import { combineReducers } from 'redux';
 
 import { BoardActionTypes, CanvasActionTypes, ToolbarActionTypes } from '../types';
 import { BoardProps } from '../../../components/board/Board';
-import { PieceProps } from '../../../components/board/Piece';
+import { ObjectProps } from '../../../components/sidebar/Objects';
 
 type BoardState = {
   board: BoardProps;
@@ -12,31 +12,31 @@ type BoardState = {
 type CanvasState = {
   bgImgUrl: string;
   color: string;
-}
+};
 
 type ToolbarState = {
-  pieces: PieceProps[];
+  pieces: ObjectProps;
   isOpen: boolean;
-}
+};
 
 const initialState: BoardState | CanvasState | ToolbarState = {
   board: {},
   currentLayer: 0,
-  bgImgUrl: "",
-  color: "black",
+  bgImgUrl: '',
+  color: 'black',
   pieces: [],
-  isOpen: true
+  isOpen: true,
 };
 
 const boardReducer = (state = initialState, action: BoardActionTypes) => {
   switch (action.type) {
     case 'ADD_PIECE':
-      return { ...state, board: action.payload }; 
+      return { ...state, board: action.payload };
     case 'REMOVE_PIECE':
       return { ...state, board: action.payload };
     case 'UPDATE_PIECE':
       return { ...state, board: action.payload };
-    case 'UPDATE_BOARD': 
+    case 'UPDATE_BOARD':
       return { ...state, board: action.payload };
     default:
       return state;
@@ -59,12 +59,12 @@ const canvasReducer = (state = initialState, action: CanvasActionTypes) => {
 const toolbarReducer = (state = initialState, action: ToolbarActionTypes) => {
   switch (action.type) {
     case 'NEW_PIECE':
-      return { ...state, toolbar: action.payload }; 
+      return { ...state, toolbar: action.payload };
     case 'DELETE_PIECE':
       return { ...state, toolbar: action.payload };
-    case 'NEW_LAYER': 
+    case 'NEW_LAYER':
       return { ...state, toolbar: action.payload };
-    case 'DELETE_LAYER': 
+    case 'DELETE_LAYER':
       return { ...state, toolbar: action.payload };
     default:
       return state;
@@ -74,5 +74,5 @@ const toolbarReducer = (state = initialState, action: ToolbarActionTypes) => {
 export default combineReducers({
   board: boardReducer,
   canvas: canvasReducer,
-  toolbar: toolbarReducer
+  toolbar: toolbarReducer,
 });

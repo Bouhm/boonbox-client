@@ -1,19 +1,19 @@
-import { PieceProps } from '../../components/board/Piece';
 import { BoardProps } from '../../components/board/Board';
+import { ObjectProps } from '../../components/sidebar/Objects';
 
 type AddPieceAction = {
   type: 'ADD_PIECE';
-  payload: PieceProps;
+  payload: ObjectProps;
 };
 
 type RemovePieceAction = {
   type: 'REMOVE_PIECE';
-  payload: PieceProps;
+  payload: ObjectProps;
 };
 
 type UpdatePieceAction = {
   type: 'UPDATE_PIECE';
-  payload: PieceProps;
+  payload: ObjectProps;
 };
 
 type UpdateBoardAction = {
@@ -35,19 +35,19 @@ type RemoveBackgroundAction = {
 
 type SelectColorAction = {
   type: 'SELECT_COLOR';
-  payload: string
+  payload: string;
 };
 
 export type CanvasActionTypes = ChangeBackgroundAction | RemoveBackgroundAction | SelectColorAction;
 
 type NewPieceAction = {
   type: 'NEW_PIECE';
-  payload: PieceProps;
+  payload: ObjectProps;
 };
 
 type DeletePieceAction = {
   type: 'DELETE_PIECE';
-  payload: PieceProps;
+  payload: ObjectProps;
 };
 
 type NewLayerAction = {
@@ -56,7 +56,7 @@ type NewLayerAction = {
 };
 
 type DeleteLayerAction = {
-  type: 'DELETE_LAYER'
+  type: 'DELETE_LAYER';
   payload: number;
 };
 
