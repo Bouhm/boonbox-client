@@ -1,24 +1,24 @@
-import { BoardProps } from '../../components/board/Board';
-import { ObjectProps } from '../../components/board/Object';
+import { IBoard } from '../../components/board/Board';
+import { IObjectPiece } from '../../components/board/ObjectPiece';
 
 type AddPieceAction = {
   type: 'ADD_PIECE';
-  payload: ObjectProps;
+  payload: IObjectPiece;
 };
 
 type RemovePieceAction = {
   type: 'REMOVE_PIECE';
-  payload: ObjectProps;
+  payload: IObjectPiece;
 };
 
 type UpdatePieceAction = {
   type: 'UPDATE_PIECE';
-  payload: ObjectProps;
+  payload: IObjectPiece;
 };
 
 type UpdateBoardAction = {
   type: 'UPDATE_BOARD';
-  payload: BoardProps;
+  payload: IBoard;
 };
 
 export type BoardActionTypes = AddPieceAction | RemovePieceAction | UpdatePieceAction | UpdateBoardAction;
@@ -42,12 +42,12 @@ export type CanvasActionTypes = ChangeBackgroundAction | RemoveBackgroundAction 
 
 type NewPieceAction = {
   type: 'NEW_PIECE';
-  payload: ObjectProps;
+  payload: IObjectPiece;
 };
 
 type DeletePieceAction = {
   type: 'DELETE_PIECE';
-  payload: ObjectProps;
+  payload: IObjectPiece;
 };
 
 type NewLayerAction = {

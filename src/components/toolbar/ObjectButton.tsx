@@ -14,7 +14,7 @@ const ObjectButton = ({ type, handleButtonClick }: ObjectButtonProps) => {
     }
 
     return (
-        <div onClick={handleClick}>
+        <div className="ObjectButton" onClick={handleClick}>
             {type}
         </div>
     )

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 import Input from '../form/Input';
 import ObjectSelector from './ObjectSelector';
+import "./Toolbar.css";
 
 type ToolbarProps = {
   isOpen: boolean;

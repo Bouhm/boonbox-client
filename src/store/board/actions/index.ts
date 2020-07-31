@@ -17,6 +17,6 @@ export const removeBackground = (): CanvasActionTypes => {
 export const updateBoard = (): BoardActionTypes => {
   return {
     type: 'UPDATE_BOARD',
-    payload: [],
+    payload: {},
   };
 };

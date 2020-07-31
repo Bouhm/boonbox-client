@@ -1,6 +1,15 @@
 import React, { useEffect, useState } from 'react';
+import { IObjectPiece } from "./ObjectPiece";
 import _Moveable from './Moveable';
 import './Board.css';
+
+export interface ILayer {
+  pieces: IObjectPiece[];
+}
+
+export interface IBoard {
+  layers: ILayer[];
+}
 
 export type BoardProps = {};
 

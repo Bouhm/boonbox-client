@@ -1,5 +1,6 @@
-import React, { useState, MouseEvent } from 'react';
+import React, { useState } from 'react';
 import ObjectButton, { ObjectTypes, ObjectType } from './ObjectButton';
+import "./ObjectSelector.css";
 
 type ObjectSelectorProps = {
   handleAddNewObject(): void;
@@ -21,8 +22,8 @@ const ObjectSelector = ({ handleAddNewObject }: ObjectSelectorProps) => {
   }
 
   return (
-    <div>
-      {Object.keys(ObjectTypes).map(renderObjectType)}
+    <div className="ObjectSelector">
+      {ObjectTypes.map(renderObjectType)}
       <div onClick={handleClickNewObject}>+ New Object</div>
     </div>
   );
