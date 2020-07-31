@@ -1,7 +1,7 @@
 import React from 'react';
 import Board from './board/Board';
 import Canvas from './board/Canvas';
-import Toolbar from './sidebar/Toolbar';
+import Toolbar from './toolbar/Toolbar';
 
 const App: React.FC = () => {
   return (

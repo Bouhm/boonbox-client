@@ -1,15 +1,11 @@
 import React, { useState, MouseEvent } from 'react';
 import ObjectButton, { ObjectTypes, ObjectType } from './ObjectButton';
 
-interface IObjectSelectorProps {
+type ObjectSelectorProps = {
   handleAddNewObject(): void;
 };
 
-interface IObjectSelectorState {
-  selectedObjectType: ObjectType | null;
-}
-
-const ObjectSelector = ({ handleAddNewObject }: IObjectSelectorProps) => {
+const ObjectSelector = ({ handleAddNewObject }: ObjectSelectorProps) => {
   const [selectedObjectType, setSelectedObjectType] = useState<ObjectType | null>(null);
 
   const handleClickObjectButton = (objType: ObjectType) => {

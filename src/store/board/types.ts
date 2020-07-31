@@ -1,5 +1,5 @@
 import { BoardProps } from '../../components/board/Board';
-import { ObjectProps } from '../../components/sidebar/objects/ObjectSelector';
+import { ObjectProps } from '../../components/board/Object';
 
 type AddPieceAction = {
   type: 'ADD_PIECE';

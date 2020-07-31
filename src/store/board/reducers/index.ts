@@ -2,7 +2,7 @@ import { combineReducers } from 'redux';
 
 import { BoardActionTypes, CanvasActionTypes, ToolbarActionTypes } from '../types';
 import { BoardProps } from '../../../components/board/Board';
-import { ObjectProps } from '../../../components/sidebar/objects/ObjectSelector';
+import { ObjectProps } from '../../../components/board/Object';
 
 type BoardState = {
   board: BoardProps;
@@ -15,7 +15,7 @@ type CanvasState = {
 };
 
 type ToolbarState = {
-  pieces: ObjectProps;
+  pieces: ObjectProps | [];
   isOpen: boolean;
 };
 

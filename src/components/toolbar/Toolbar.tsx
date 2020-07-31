@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import Input from '../form/Input';
-import Objects from './objects/ObjectSelector';
+import ObjectSelector from './ObjectSelector';
 
 type ToolbarProps = {
   isOpen: boolean;
@@ -14,15 +14,15 @@ type ToolbarState = {
 const Toolbar = ({ isOpen }: ToolbarProps) => {
   if (!isOpen) return null;
 
-  handleAddNewObject = () => {
+  const handleAddNewObject = () => {
 
   }
 
   return (
-    <div>
+    <div className="Toolbar">
       <label>Background:</label>
       <Input />
-      <Objects />
+      <ObjectSelector handleAddNewObject={handleAddNewObject} />
     </div>
   );
 };
