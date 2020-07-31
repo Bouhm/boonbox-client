@@ -16,12 +16,12 @@ type UpdatePieceAction = {
   payload: IObjectPiece;
 };
 
-type UpdateBoardAction = {
-  type: 'UPDATE_BOARD';
-  payload: IBoard;
+type ChangeActiveLayerAction = {
+  type: 'CHANGE_ACTIVE_LAYER';
+  payload: number;
 };
 
-export type BoardActionTypes = AddPieceAction | RemovePieceAction | UpdatePieceAction | UpdateBoardAction;
+export type BoardActionTypes = AddPieceAction | RemovePieceAction | UpdatePieceAction | ChangeActiveLayerAction;
 
 type ChangeBackgroundAction = {
   type: 'CHANGE_BACKGROUND';
@@ -40,16 +40,6 @@ type SelectColorAction = {
 
 export type CanvasActionTypes = ChangeBackgroundAction | RemoveBackgroundAction | SelectColorAction;
 
-type NewPieceAction = {
-  type: 'NEW_PIECE';
-  payload: IObjectPiece;
-};
-
-type DeletePieceAction = {
-  type: 'DELETE_PIECE';
-  payload: IObjectPiece;
-};
-
 type NewLayerAction = {
   type: 'NEW_LAYER';
   payload: number;
@@ -60,4 +50,4 @@ type DeleteLayerAction = {
   payload: number;
 };
 
-export type ToolbarActionTypes = NewPieceAction | DeletePieceAction | NewLayerAction | DeleteLayerAction;
+export type ToolbarActionTypes = NewLayerAction | DeleteLayerAction;

@@ -5,7 +5,7 @@ import { IBoard } from '../../../components/board/Board';
 
 type BoardState = {
   board: IBoard;
-  currentLayer: number;
+  activeLayer: number;
 };
 
 type CanvasState = {
@@ -18,11 +18,10 @@ type ToolbarState = {
 };
 
 const initialState: BoardState | CanvasState | ToolbarState = {
-  board: {},
-  currentLayer: 0,
+  board: { layers: [] },
+  activeLayer: 0,
   bgImgUrl: '',
   color: 'black',
-  pieces: [],
   isOpen: true,
 };
 
@@ -34,8 +33,8 @@ const boardReducer = (state = initialState, action: BoardActionTypes) => {
       return { ...state, board: action.payload };
     case 'UPDATE_PIECE':
       return { ...state, board: action.payload };
-    case 'UPDATE_BOARD':
-      return { ...state, board: action.payload };
+    case 'CHANGE_ACTIVE_LAYER':
+      return { ...state, activeLayer: action.payload };
     default:
       return state;
   }
@@ -56,10 +55,6 @@ const canvasReducer = (state = initialState, action: CanvasActionTypes) => {
 
 const toolbarReducer = (state = initialState, action: ToolbarActionTypes) => {
   switch (action.type) {
-    case 'NEW_PIECE':
-      return { ...state, toolbar: action.payload };
-    case 'DELETE_PIECE':
-      return { ...state, toolbar: action.payload };
     case 'NEW_LAYER':
       return { ...state, toolbar: action.payload };
     case 'DELETE_LAYER':
