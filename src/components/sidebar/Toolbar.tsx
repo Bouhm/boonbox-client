@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 import Input from '../form/Input';
+import Objects from './objects/ObjectSelector';
 
 type ToolbarProps = {
   isOpen: boolean;
@@ -13,10 +14,15 @@ type ToolbarState = {
 const Toolbar = ({ isOpen }: ToolbarProps) => {
   if (!isOpen) return null;
 
+  handleAddNewObject = () => {
+
+  }
+
   return (
     <div>
       <label>Background:</label>
       <Input />
+      <Objects />
     </div>
   );
 };

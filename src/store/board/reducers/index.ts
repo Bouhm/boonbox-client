@@ -2,7 +2,7 @@ import { combineReducers } from 'redux';
 
 import { BoardActionTypes, CanvasActionTypes, ToolbarActionTypes } from '../types';
 import { BoardProps } from '../../../components/board/Board';
-import { ObjectProps } from '../../../components/sidebar/Objects';
+import { ObjectProps } from '../../../components/sidebar/objects/ObjectSelector';
 
 type BoardState = {
   board: BoardProps;
