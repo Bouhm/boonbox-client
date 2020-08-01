@@ -40,26 +40,26 @@ const _Moveable = ({ target }: MoveableProps) => {
         // target!.style.top = `${top}px`;
         target!.style.transform = transform;
       }}
-      onDragEnd={({ target, isDrag, clientX, clientY }) => {}}
+      onDragEnd={({ target, isDrag, clientX, clientY }) => { }}
       /* When resize or scale, keeps a ratio of the width, height. */
-      keepRatio={true}
+      keepRatio={false}
       /* scalable */
       /* Only one of resizable, scalable, warpable can be used. */
       scalable={true}
       throttleScale={0}
-      onScaleStart={({ target, clientX, clientY }) => {}}
+      onScaleStart={({ target, clientX, clientY }) => { }}
       onScale={({ target, scale, dist, delta, transform, clientX, clientY }: OnScale) => {
         target!.style.transform = transform;
       }}
-      onScaleEnd={({ target, isDrag, clientX, clientY }) => {}}
+      onScaleEnd={({ target, isDrag, clientX, clientY }) => { }}
       /* rotatable */
       rotatable={true}
       throttleRotate={0}
-      onRotateStart={({ target, clientX, clientY }) => {}}
+      onRotateStart={({ target, clientX, clientY }) => { }}
       onRotate={({ target, delta, dist, transform, clientX, clientY }: OnRotate) => {
         target!.style.transform = transform;
       }}
-      onRotateEnd={({ target, isDrag, clientX, clientY }) => {}}
+      onRotateEnd={({ target, isDrag, clientX, clientY }) => { }}
       // Enabling pinchable lets you use events that
       // can be used in draggable, resizable, scalable, and rotateable.
       pinchable={true}

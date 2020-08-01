@@ -3,18 +3,12 @@ import { IObjectPiece } from "./ObjectPiece";
 import _Moveable from './Moveable';
 import './Board.css';
 
-export interface ILayer {
+export type BoardProps = {
   pieces: IObjectPiece[];
 }
 
-export interface IBoard {
-  layers: ILayer[];
-}
-
-export type BoardProps = {};
-
-const Board = (props: BoardProps) => {
-  const [target, setTarget] = useState<string>();
+const Board = ({ pieces }: BoardProps) => {
+  const [targets, setTargets] = useState<string[]>([]);
 
   const handleClickTarget = (e: React.MouseEvent) => {
     const classList = e.currentTarget.classList;
@@ -24,16 +18,16 @@ const Board = (props: BoardProps) => {
       className += `.${classList[i]}`;
     }
 
-    setTarget(className);
+    setTargets([className]);
   };
 
   const handleLoseFocus = () => {
-    setTarget('');
+    setTargets([]);
   };
 
   return (
     <div>
-      {target && <_Moveable target={document.querySelector(`${target}`) as HTMLElement} />}
+      {targets[0] && <_Moveable target={document.querySelector(`${targets[0]}`) as HTMLElement} />}
       <div tabIndex={0} className="text moveable" onClick={handleClickTarget} onBlur={handleLoseFocus}>
         HENLO
       </div>

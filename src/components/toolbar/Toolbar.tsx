@@ -4,12 +4,8 @@ import Input from '../form/Input';
 import ObjectSelector from './ObjectSelector';
 import "./Toolbar.css";
 
-type ToolbarProps = {
+export type ToolbarProps = {
   isOpen: boolean;
-};
-
-type ToolbarState = {
-  tabIndex: number;
 };
 
 const Toolbar = ({ isOpen }: ToolbarProps) => {

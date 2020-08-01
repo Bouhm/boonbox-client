@@ -1,7 +1,8 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 
-type CanvasProps = {
-  bgImgUrl: string;
+export type CanvasProps = {
+  bgImgUrl?: string;
+  color?: string;
 };
 
 type Coordinate = {
