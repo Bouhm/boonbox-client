@@ -1,22 +1,19 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from "react";
+
+import { Position } from "./ObjectPiece";
 
 export type CanvasProps = {
   bgImgUrl?: string;
   color?: string;
 };
 
-type Coordinate = {
-  x: number;
-  y: number;
-};
-
-const Canvas = ({ bgImgUrl }: CanvasProps) => {
+const Canvas = ({ bgImgUrl, color = '#000' }: CanvasProps) => {
   const width = window.innerWidth;
   const height = window.innerHeight;
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [isPainting, setIsPainting] = useState(false);
-  const [mousePosition, setMousePosition] = useState<Coordinate | undefined>(undefined);
+  const [mousePosition, setMousePosition] = useState<Position | undefined>(undefined);
 
   const startPaint = useCallback((event: MouseEvent) => {
     const coordinates = getCoordinates(event);
@@ -41,10 +38,10 @@ const Canvas = ({ bgImgUrl }: CanvasProps) => {
   const paint = useCallback(
     (event: MouseEvent) => {
       if (isPainting) {
-        const newMousePosition = getCoordinates(event);
-        if (mousePosition && newMousePosition) {
-          drawLine(mousePosition, newMousePosition);
-          setMousePosition(newMousePosition);
+        const endMousePosition = getCoordinates(event);
+        if (mousePosition && endMousePosition) {
+          drawLine(mousePosition, endMousePosition);
+          setMousePosition(endMousePosition);
         }
       }
     },
@@ -63,7 +60,7 @@ const Canvas = ({ bgImgUrl }: CanvasProps) => {
     };
   }, [paint]);
 
-  const exitPaint = useCallback(() => {
+  const endPaint = useCallback(() => {
     setIsPainting(false);
     setMousePosition(undefined);
   }, []);
@@ -74,16 +71,16 @@ const Canvas = ({ bgImgUrl }: CanvasProps) => {
     }
 
     const canvas: HTMLCanvasElement = canvasRef.current;
-    canvas.addEventListener('mouseup', exitPaint);
-    canvas.addEventListener('mouseleave', exitPaint);
+    canvas.addEventListener('mouseup', endPaint);
+    canvas.addEventListener('mouseleave', endPaint);
 
     return () => {
-      canvas.removeEventListener('mouseup', exitPaint);
-      canvas.removeEventListener('mouseleave', exitPaint);
+      canvas.removeEventListener('mouseup', endPaint);
+      canvas.removeEventListener('mouseleave', endPaint);
     };
-  }, [exitPaint]);
+  }, [endPaint]);
 
-  const getCoordinates = (event: MouseEvent): Coordinate | undefined => {
+  const getCoordinates = (event: MouseEvent): Position | undefined => {
     if (!canvasRef.current) {
       return;
     }
@@ -92,22 +89,22 @@ const Canvas = ({ bgImgUrl }: CanvasProps) => {
     return { x: event.pageX - canvas.offsetLeft, y: event.pageY - canvas.offsetTop };
   };
 
-  const drawLine = (originalMousePosition: Coordinate, newMousePosition: Coordinate) => {
+  const drawLine = (startMousePosition: Position, endMousePosition: Position) => {
     if (!canvasRef.current) {
       return;
     }
     const canvas: HTMLCanvasElement = canvasRef.current;
     const context = canvas.getContext('2d');
+
     if (context) {
-      context.strokeStyle = 'red';
+      context.strokeStyle = color;
       context.lineJoin = 'round';
       context.lineWidth = 5;
 
       context.beginPath();
-      context.moveTo(originalMousePosition.x, originalMousePosition.y);
-      context.lineTo(newMousePosition.x, newMousePosition.y);
+      context.moveTo(startMousePosition.x, startMousePosition.y);
+      context.lineTo(endMousePosition.x, endMousePosition.y);
       context.closePath();
-
       context.stroke();
     }
   };

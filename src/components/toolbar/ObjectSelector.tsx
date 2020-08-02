@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
-import ObjectButton, { ObjectTypes, ObjectType } from './ObjectButton';
 import "./ObjectSelector.css";
+
+import React, { useState } from "react";
+
+import ObjectButton, { ObjectType, ObjectTypes } from "./ObjectButton";
 
 type ObjectSelectorProps = {
   handleAddNewObject(): void;
@@ -10,16 +12,16 @@ const ObjectSelector = ({ handleAddNewObject }: ObjectSelectorProps) => {
   const [selectedObjectType, setSelectedObjectType] = useState<ObjectType | null>(null);
 
   const handleClickObjectButton = (objType: ObjectType) => {
-    setSelectedObjectType(objType)
-  }
+    setSelectedObjectType(objType);
+  };
 
   const handleClickNewObject = () => {
     handleAddNewObject();
-  }
+  };
 
   const renderObjectType = (type: string) => {
-    return <ObjectButton type={type} handleButtonClick={handleClickObjectButton} />
-  }
+    return <ObjectButton type={type} handleButtonClick={handleClickObjectButton} />;
+  };
 
   return (
     <div className="ObjectSelector">

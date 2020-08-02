@@ -1,36 +1,31 @@
-import React from 'react';
-import { setBoard, setCanvas } from '../store/actions'
-import Board, { BoardProps } from './board/Board';
-import Canvas, { CanvasProps } from './board/Canvas';
-import Toolbar, { ToolbarProps } from './toolbar/Toolbar';
-import { connect } from 'react-redux';
+import React, { useEffect, useState } from "react";
+import { connect } from "react-redux";
+
+import { setBoard, setCanvas } from "../store/actions";
+import { initialState } from "../store/reducers";
+import Board, { BoardProps } from "./board/Board";
+import Canvas, { CanvasProps } from "./board/Canvas";
+import Toolbar, { ToolbarProps } from "./toolbar/Toolbar";
 
 export type AppState = {
-  board: BoardProps,
-  canvas: CanvasProps,
-  toolbar: ToolbarProps
-}
+  board: BoardProps;
+  canvas: CanvasProps;
+  toolbar: ToolbarProps;
+};
 
 const App: React.FC = () => {
+  useEffect(() => {
+    setBoard(initialState.board);
+    setCanvas(initialState.canvas);
+  }, []);
+
   return (
     <div className="app">
-      <Toolbar isOpen={true} />
-      <Board pieces={[]} />
-      <Canvas bgImgUrl={""} color={""} />
+      <Toolbar />
+      <Canvas {...initialState.canvas} />
+      <Board {...initialState.board} />
     </div>
   );
 };
 
-const mapStateToProps = (state: AppState) => {
-  return {
-    data: {
-      board: state.board,
-      canvas: state.canvas,
-    }
-  };
-};
-
-export default connect(
-  mapStateToProps,
-  { setBoard, setCanvas }
-)(App);
+export default connect(undefined, { setBoard, setCanvas })(App);

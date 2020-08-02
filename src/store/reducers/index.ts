@@ -1,15 +1,17 @@
-import { combineReducers } from 'redux';
-import {
-  BoardActionTypes,
-  CanvasActionTypes,
-  ToolbarActionTypes,
-  BoardActions,
-  CanvasActions,
-  ToolbarActions,
-} from '../types';
-import { AppState } from '../../components/App';
+import cloneDeep from "lodash.clonedeep";
+import { combineReducers } from "redux";
 
-const initialState: AppState = {
+import { AppState } from "../../components/App";
+import {
+  BoardActions,
+  BoardActionTypes,
+  CanvasActions,
+  CanvasActionTypes,
+  ToolbarActions,
+  ToolbarActionTypes
+} from "../actions";
+
+export const initialState: AppState = {
   board: { pieces: [] },
   canvas: { bgImgUrl: '', color: '#000' },
   toolbar: { isOpen: true },
@@ -20,7 +22,9 @@ const boardReducer = (state = initialState, action: BoardActionTypes) => {
     case BoardActions.SetBoard:
       return { ...state, board: action.payload };
     case BoardActions.AddPiece:
-      return { ...state, board: action.payload };
+      let newBoard = cloneDeep(state.board);
+      newBoard.pieces.push(action.payload);
+      return { ...state, board: newBoard };
     case BoardActions.RemovePiece:
       return { ...state, board: action.payload };
     case BoardActions.UpdatePiece:
