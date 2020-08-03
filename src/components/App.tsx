@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 
-import { setBoard, setCanvas } from "../store/actions";
-import { initialState } from "../store/reducers";
+import { initialState } from "../store";
+import { setBoard } from "../store/board/actions";
+import { setCanvas } from "../store/canvas/actions/actions";
 import Board, { BoardProps } from "./board/Board";
 import Canvas, { CanvasProps } from "./board/Canvas";
 import Toolbar, { ToolbarProps } from "./toolbar/Toolbar";
@@ -22,8 +23,8 @@ const App: React.FC = () => {
   return (
     <div className="app">
       <Toolbar />
-      <Canvas {...initialState.canvas} />
-      <Board {...initialState.board} />
+      <Canvas />
+      <Board />
     </div>
   );
 };

@@ -20,7 +20,7 @@ const ObjectSelector = ({ handleAddNewObject }: ObjectSelectorProps) => {
   };
 
   const renderObjectType = (type: string) => {
-    return <ObjectButton type={type} handleButtonClick={handleClickObjectButton} />;
+    return <ObjectButton key={type} type={type} handleButtonClick={handleClickObjectButton} />;
   };
 
   return (

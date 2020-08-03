@@ -1,9 +1,9 @@
 import "./Board.css";
 
 import React, { useState } from "react";
-import { connect } from "react-redux";
+import { connect, ConnectedProps } from "react-redux";
 
-import { removePiece, updatePiece } from "../../store/actions";
+import { removePiece, updatePiece } from "../../store/board/actions";
 import { AppState } from "../App";
 import _Moveable from "./Moveable";
 import { IObjectPiece } from "./ObjectPiece";
@@ -12,35 +12,38 @@ export type BoardProps = {
   pieces: IObjectPiece[];
 };
 
-const Board = ({ pieces }: BoardProps) => {
-  const [targets, setTargets] = useState<string[]>([]);
+type Props = BoardProps & ConnectedProps<typeof connector>;
+
+const Board = ({ pieces, updatePiece, removePiece }: Props) => {
+  const [target, setTarget] = useState<string>('');
 
   const handleClickTarget = (e: React.MouseEvent) => {
     const classList = e.currentTarget.classList;
-    let className = '';
+    let className = 'moveable';
 
     for (let i = 0; i < classList.length; i++) {
       className += `.${classList[i]}`;
     }
 
-    setTargets([className]);
+    setTarget(className);
   };
 
   const handleLoseFocus = () => {
-    setTargets([]);
+    setTarget('');
   };
 
-  const renderObjectPiece = (piece: IObjectPiece) => {
+  const renderObjectPiece = (piece: IObjectPiece, idx: number) => {
+    console.log(idx);
     switch (piece.type) {
       case 'image':
         return (
-          <div className="text moveable" onClick={handleClickTarget} onBlur={handleLoseFocus}>
+          <div key={idx} tabIndex={0} onClick={handleClickTarget} onBlur={handleLoseFocus}>
             <img src={piece.data} />
           </div>
         );
       case 'text':
         return (
-          <div className="text moveable" onClick={handleClickTarget} onBlur={handleLoseFocus}>
+          <div key={idx} tabIndex={0} onClick={handleClickTarget} onBlur={handleLoseFocus}>
             {piece.data}
           </div>
         );
@@ -49,16 +52,17 @@ const Board = ({ pieces }: BoardProps) => {
 
   return (
     <div>
-      {targets[0] && <_Moveable target={document.querySelector(`${targets[0]}`) as HTMLElement} />}
-      {pieces.map(renderObjectPiece)}
+      {target.length > 0 && <_Moveable target={document.querySelector(`${target}`) as HTMLElement} />}
+      {pieces && pieces.map(renderObjectPiece)}
     </div>
   );
 };
 
 const mapStateToProps = (state: AppState) => {
-  return {
-    board: state.board,
-  };
+  console.log(state);
+  return { ...state.board };
 };
 
-export default connect(mapStateToProps, { updatePiece, removePiece })(Board);
+const connector = connect(mapStateToProps, { updatePiece, removePiece });
+
+export default connector(Board);

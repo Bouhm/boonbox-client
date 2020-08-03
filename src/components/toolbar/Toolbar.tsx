@@ -1,9 +1,9 @@
 import "./Toolbar.css";
 
 import React, { useState } from "react";
-import { connect } from "react-redux";
+import { connect, ConnectedProps } from "react-redux";
 
-import { addPiece, toggleToolbar } from "../../store/actions";
+import { addPiece } from "../../store/board/actions";
 import { AppState } from "../App";
 import Input from "../form/Input";
 import ObjectSelector from "./ObjectSelector";
@@ -12,7 +12,9 @@ export type ToolbarProps = {
   isOpen?: boolean;
 };
 
-const Toolbar = ({ isOpen = true }: ToolbarProps) => {
+type Props = ToolbarProps & ConnectedProps<typeof connector>;
+
+const Toolbar = ({ isOpen = true, addPiece, toggleToolbar }: Props) => {
   if (!isOpen) return null;
 
   const handleAddNewObject = () => {
@@ -29,9 +31,9 @@ const Toolbar = ({ isOpen = true }: ToolbarProps) => {
 };
 
 const mapStateToProps = (state: AppState) => {
-  return {
-    toolbar: state.toolbar,
-  };
+  return { ...state.toolbar };
 };
 
-export default connect(mapStateToProps, { addPiece, toggleToolbar })(Toolbar);
+const connector = connect(mapStateToProps, { addPiece, toggleToolbar });
+
+export default connector(Toolbar);
