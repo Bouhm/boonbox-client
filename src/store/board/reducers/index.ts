@@ -1,20 +1,29 @@
-import cloneDeep from "lodash.clonedeep";
+import cloneDeep from 'lodash.clonedeep';
+import { BoardProps } from '../../../components/board/Board';
 
-import { initialState } from "../..";
-import { BoardActions, BoardActionTypes } from "../actions";
+import { BoardActions, BoardActionTypes } from '../actions';
+
+export const initialState: BoardProps = {
+  pieces: [],
+};
 
 export const boardReducer = (state = initialState, action: BoardActionTypes) => {
+  let newBoard = cloneDeep(state);
+
   switch (action.type) {
     case BoardActions.SetBoard:
-      return { ...state, board: action.payload };
+      return { ...action.payload };
     case BoardActions.AddPiece:
-      let newBoard = cloneDeep(state.board);
       newBoard.pieces.push(action.payload);
       return { ...newBoard };
     case BoardActions.RemovePiece:
-      return { ...state, board: action.payload };
+      let idx = newBoard.pieces.indexOf(action.payload);
+      newBoard.pieces.splice(idx, 1);
+      return { ...newBoard };
     case BoardActions.UpdatePiece:
-      return { ...state, board: action.payload };
+      idx = newBoard.pieces.indexOf(action.payload);
+      newBoard.pieces[idx] = action.payload;
+      return { ...newBoard };
     default:
       return state;
   }

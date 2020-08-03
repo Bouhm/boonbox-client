@@ -1,12 +1,12 @@
-import "./Board.css";
+import './Board.css';
 
-import React, { useState } from "react";
-import { connect, ConnectedProps } from "react-redux";
+import React, { useState } from 'react';
+import { connect, ConnectedProps } from 'react-redux';
 
-import { removePiece, updatePiece } from "../../store/board/actions";
-import { AppState } from "../App";
-import _Moveable from "./Moveable";
-import { IObjectPiece } from "./ObjectPiece";
+import { removePiece, updatePiece } from '../../store/board/actions';
+import { AppState } from '../App';
+import _Moveable from './Moveable';
+import { IObjectPiece } from './ObjectPiece';
 
 export type BoardProps = {
   pieces: IObjectPiece[];

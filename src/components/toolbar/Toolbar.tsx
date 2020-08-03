@@ -1,12 +1,13 @@
-import "./Toolbar.css";
+import './Toolbar.css';
 
-import React, { useState } from "react";
-import { connect, ConnectedProps } from "react-redux";
+import React, { useState } from 'react';
+import { connect, ConnectedProps } from 'react-redux';
 
-import { addPiece } from "../../store/board/actions";
-import { AppState } from "../App";
-import Input from "../form/Input";
-import ObjectSelector from "./ObjectSelector";
+import { addPiece } from '../../store/board/actions';
+import { toggleToolbar } from '../../store/toolbar/actions';
+import { AppState } from '../App';
+import Input from '../form/Input';
+import ObjectSelector from './ObjectSelector';
 
 export type ToolbarProps = {
   isOpen?: boolean;

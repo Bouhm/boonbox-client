@@ -1,14 +1,19 @@
-import { initialState } from "../../..";
-import { CanvasActions, CanvasActionTypes } from "../actions";
+import { CanvasActions, CanvasActionTypes } from '../actions';
+import { CanvasProps } from '../../../../components/board/Canvas';
+
+export const initialState: CanvasProps = {
+  color: '#000',
+  bgImgUrl: '',
+};
 
 export const canvasReducer = (state = initialState, action: CanvasActionTypes) => {
   switch (action.type) {
     case CanvasActions.SetCanvas:
-      return { ...state, canvas: action.payload };
+      return { ...action.payload };
     case CanvasActions.ChangeBackground:
-      return { ...state, canvas: action.payload };
+      return { ...state, bgImgUrl: action.payload };
     case CanvasActions.SelectColor:
-      return { ...state, canvas: action.payload };
+      return { ...state, color: action.payload };
     default:
       return state;
   }
