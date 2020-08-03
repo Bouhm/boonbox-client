@@ -19,7 +19,17 @@ const Toolbar = ({ isOpen = true, addPiece, toggleToolbar }: Props) => {
   if (!isOpen) return null;
 
   const handleAddNewObject = () => {
-    addPiece({ data: 'HELLO', type: 'text' });
+    const key =
+      '_' +
+      Math.random()
+        .toString(36)
+        .substr(2, 9);
+
+    addPiece({
+      key,
+      data: 'HELLO',
+      type: 'text',
+    });
   };
 
   return (

@@ -18,35 +18,34 @@ const Board = ({ pieces, updatePiece, removePiece }: Props) => {
   const [target, setTarget] = useState<string>('');
 
   const handleClickTarget = (e: React.MouseEvent) => {
-    const classList = e.currentTarget.classList;
-    let className = 'moveable';
-
-    for (let i = 0; i < classList.length; i++) {
-      className += `.${classList[i]}`;
-    }
-
-    setTarget(className);
+    setTarget(`#${e.currentTarget.id}`);
   };
 
   const handleLoseFocus = () => {
     setTarget('');
   };
 
-  const renderObjectPiece = (piece: IObjectPiece, idx: number) => {
+  const renderObjectPiece = (piece: IObjectPiece) => {
+    let content = <>{piece.data}</>;
+
     switch (piece.type) {
       case 'image':
-        return (
-          <div key={idx} tabIndex={0} onClick={handleClickTarget} onBlur={handleLoseFocus}>
-            <img src={piece.data} />
-          </div>
-        );
-      case 'text':
-        return (
-          <div key={idx} tabIndex={0} onClick={handleClickTarget} onBlur={handleLoseFocus}>
-            {piece.data}
-          </div>
-        );
+        content = <img src={piece.data} />;
+        break;
     }
+
+    return (
+      <div
+        key={piece.key}
+        id={piece.key}
+        className="moveable"
+        tabIndex={0}
+        onClick={handleClickTarget}
+        onBlur={handleLoseFocus}
+      >
+        {content}
+      </div>
+    );
   };
 
   return (
