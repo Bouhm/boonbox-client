@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 
 import { setBoard } from '../store/board/actions';
-import { setCanvas } from '../store/canvas/actions/actions';
+import { setCanvas } from '../store/canvas/actions';
 import Board, { BoardProps } from './board/Board';
 import Canvas, { CanvasProps } from './board/Canvas';
 import Toolbar, { ToolbarProps } from './toolbar/Toolbar';

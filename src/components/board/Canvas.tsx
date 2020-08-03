@@ -1,11 +1,16 @@
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { connect, ConnectedProps } from 'react-redux';
+import { AppState } from '../App';
 
-import { Position } from "./ObjectPiece";
+import { Position } from './ObjectPiece';
+import { selectColor, changeBackground } from '../../store/canvas/actions';
 
 export type CanvasProps = {
   bgImgUrl?: string;
   color?: string;
 };
+
+type Props = CanvasProps & ConnectedProps<typeof connector>;
 
 const Canvas = ({ bgImgUrl, color = '#000' }: CanvasProps) => {
   const width = window.innerWidth;
@@ -112,4 +117,10 @@ const Canvas = ({ bgImgUrl, color = '#000' }: CanvasProps) => {
   return <canvas ref={canvasRef} height={height} width={width} />;
 };
 
-export default Canvas;
+const mapStateToProps = (state: AppState) => {
+  return { ...state.canvas };
+};
+
+const connector = connect(mapStateToProps, { selectColor, changeBackground });
+
+export default connector(Canvas);

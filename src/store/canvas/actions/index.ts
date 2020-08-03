@@ -1,4 +1,4 @@
-import { CanvasProps } from "../../../../components/board/Canvas";
+import { CanvasProps } from '../../../components/board/Canvas';
 
 export enum CanvasActions {
   SetCanvas,
@@ -37,7 +37,7 @@ export const changeBackground = (imgUrl: string): CanvasActionTypes => {
   };
 };
 
-export const SelectColor = (color: string): CanvasActionTypes => {
+export const selectColor = (color: string): CanvasActionTypes => {
   return {
     type: CanvasActions.SelectColor,
     payload: color,

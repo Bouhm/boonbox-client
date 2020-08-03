@@ -33,7 +33,6 @@ const Board = ({ pieces, updatePiece, removePiece }: Props) => {
   };
 
   const renderObjectPiece = (piece: IObjectPiece, idx: number) => {
-    console.log(idx);
     switch (piece.type) {
       case 'image':
         return (
@@ -59,7 +58,6 @@ const Board = ({ pieces, updatePiece, removePiece }: Props) => {
 };
 
 const mapStateToProps = (state: AppState) => {
-  console.log(state);
   return { ...state.board };
 };
 

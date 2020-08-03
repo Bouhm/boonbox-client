@@ -1,5 +1,5 @@
 import { CanvasActions, CanvasActionTypes } from '../actions';
-import { CanvasProps } from '../../../../components/board/Canvas';
+import { CanvasProps } from '../../../components/board/Canvas';
 
 export const initialState: CanvasProps = {
   color: '#000',
