@@ -1,11 +1,20 @@
-import React from 'react';
+import React, { ChangeEvent } from 'react';
 
-import useInput from '../form/useInput';
+type InputProps = {
+  name: string;
+  value: string;
+  label?: string;
+  onChange(e: ChangeEvent<HTMLInputElement>): void;
+};
 
-const Input = (props: any) => {
-  const { inputVal, handleInputChange } = useInput();
-
-  return <input value={inputVal} onChange={handleInputChange} />;
+const Input = ({ label, name, onChange, value }: InputProps) => {
+  console.log(name);
+  return (
+    <>
+      <label>{label ? label : name.slice(0, 1).toUpperCase() + name.slice(1, name.length)}</label>
+      <input name={name} value={value} onChange={onChange} />
+    </>
+  );
 };
 
 export default Input;
