@@ -1,7 +1,7 @@
 import { SidebarActions, SidebarActionTypes } from '../actions';
-import { ToolsProps } from '../../../components/sidebar/Tools';
+import { SidebarProps } from '../../../components/sidebar/Sidebar';
 
-export const initialState: ToolsProps = {
+export const initialState: SidebarProps = {
   isOpen: true,
 };
 

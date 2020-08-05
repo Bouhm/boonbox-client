@@ -5,12 +5,12 @@ import { setBoard } from '../store/board/actions';
 import { setCanvas } from '../store/canvas/actions';
 import Board, { BoardProps } from './board/Board';
 import Canvas, { CanvasProps } from './canvas/Canvas';
-import Tools, { ToolsProps } from './sidebar/Tools';
+import Sidebar, { SidebarProps } from './sidebar/Sidebar';
 
 export type AppState = {
   board: BoardProps;
   canvas: CanvasProps;
-  toolbar: ToolsProps;
+  sidebar: SidebarProps;
 };
 
 const App: React.FC = () => {
@@ -18,7 +18,7 @@ const App: React.FC = () => {
 
   return (
     <div className="app">
-      <Tools />
+      <Sidebar />
       <Canvas />
       <Board />
     </div>

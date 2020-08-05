@@ -9,7 +9,7 @@ type ToggleSidebar = {
 
 export type SidebarActionTypes = ToggleSidebar;
 
-export const toggleToolbar = (isOpen: boolean): SidebarActionTypes => {
+export const toggleSidebar = (isOpen: boolean): SidebarActionTypes => {
   return {
     type: SidebarActions.ToggleSidebar,
     payload: isOpen,

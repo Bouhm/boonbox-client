@@ -1,27 +1,18 @@
-import './Toolbar.css';
-
-import React, { ChangeEvent, useState } from 'react';
+import React from 'react';
 import { connect, ConnectedProps } from 'react-redux';
 
 import { addPiece } from '../../store/board/actions';
-import { toggleToolbar } from '../../store/toolbar/actions';
 import { AppState } from '../App';
 import Input from '../form/Input';
 import ObjectSelector from './ObjectSelector';
 import useForm from '../form/useForm';
 
-export type ToolsProps = {
-  isOpen?: boolean;
-};
+type Props = ConnectedProps<typeof connector>;
 
-type Props = ToolsProps & ConnectedProps<typeof connector>;
-
-const Tools = ({ isOpen = true, addPiece, toggleToolbar }: Props) => {
+const Tools = ({ isOpen = true, addPiece }: Props) => {
   const bgInputName = 'background';
   const objValName = 'value';
   const { formData, handleInputChange } = useForm({ [bgInputName]: '', [objValName]: '' });
-
-  if (!isOpen) return null;
 
   const handleAddNewObject = () => {
     const key =
@@ -38,7 +29,7 @@ const Tools = ({ isOpen = true, addPiece, toggleToolbar }: Props) => {
   };
 
   return (
-    <div className="Toolbar">
+    <div className="Tools">
       <Input name={bgInputName} value={formData[bgInputName]} onChange={handleInputChange} />
       <ObjectSelector handleAddNewObject={handleAddNewObject} />
       <Input name={objValName} value={formData[objValName]} onChange={handleInputChange} />
@@ -47,9 +38,9 @@ const Tools = ({ isOpen = true, addPiece, toggleToolbar }: Props) => {
 };
 
 const mapStateToProps = (state: AppState) => {
-  return { ...state.toolbar };
+  return { ...state.sidebar };
 };
 
-const connector = connect(mapStateToProps, { addPiece, toggleToolbar });
+const connector = connect(mapStateToProps, { addPiece });
 
 export default connector(Tools);
