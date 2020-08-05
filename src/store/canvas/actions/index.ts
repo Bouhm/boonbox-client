@@ -1,4 +1,4 @@
-import { CanvasProps } from '../../../components/board/Canvas';
+import { CanvasProps } from '../../../components/canvas/Canvas';
 
 export enum CanvasActions {
   SetCanvas,

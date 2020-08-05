@@ -2,8 +2,9 @@ import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { connect, ConnectedProps } from 'react-redux';
 import { AppState } from '../App';
 
-import { Position } from './ObjectPiece';
+import { Position } from '../board/ObjectPiece';
 import { selectColor, changeBackground } from '../../store/canvas/actions';
+import './Canvas.css';
 
 export type CanvasProps = {
   bgImgUrl?: string;
@@ -114,7 +115,7 @@ const Canvas = ({ bgImgUrl, color = '#000' }: CanvasProps) => {
     }
   };
 
-  return <canvas ref={canvasRef} height={height} width={width} />;
+  return <canvas id="Canvas" ref={canvasRef} height={height} width={width} />;
 };
 
 const mapStateToProps = (state: AppState) => {

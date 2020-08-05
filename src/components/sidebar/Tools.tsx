@@ -10,13 +10,13 @@ import Input from '../form/Input';
 import ObjectSelector from './ObjectSelector';
 import useForm from '../form/useForm';
 
-export type ToolbarProps = {
+export type ToolsProps = {
   isOpen?: boolean;
 };
 
-type Props = ToolbarProps & ConnectedProps<typeof connector>;
+type Props = ToolsProps & ConnectedProps<typeof connector>;
 
-const Toolbar = ({ isOpen = true, addPiece, toggleToolbar }: Props) => {
+const Tools = ({ isOpen = true, addPiece, toggleToolbar }: Props) => {
   const bgInputName = 'background';
   const objValName = 'value';
   const { formData, handleInputChange } = useForm({ [bgInputName]: '', [objValName]: '' });
@@ -52,4 +52,4 @@ const mapStateToProps = (state: AppState) => {
 
 const connector = connect(mapStateToProps, { addPiece, toggleToolbar });
 
-export default connector(Toolbar);
+export default connector(Tools);

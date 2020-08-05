@@ -4,13 +4,13 @@ import { connect } from 'react-redux';
 import { setBoard } from '../store/board/actions';
 import { setCanvas } from '../store/canvas/actions';
 import Board, { BoardProps } from './board/Board';
-import Canvas, { CanvasProps } from './board/Canvas';
-import Toolbar, { ToolbarProps } from './toolbar/Toolbar';
+import Canvas, { CanvasProps } from './canvas/Canvas';
+import Tools, { ToolsProps } from './sidebar/Tools';
 
 export type AppState = {
   board: BoardProps;
   canvas: CanvasProps;
-  toolbar: ToolbarProps;
+  toolbar: ToolsProps;
 };
 
 const App: React.FC = () => {
@@ -18,7 +18,7 @@ const App: React.FC = () => {
 
   return (
     <div className="app">
-      <Toolbar />
+      <Tools />
       <Canvas />
       <Board />
     </div>

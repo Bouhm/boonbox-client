@@ -8,7 +8,6 @@ type InputProps = {
 };
 
 const Input = ({ label, name, onChange, value }: InputProps) => {
-  console.log(name);
   return (
     <>
       <label>{label ? label : name.slice(0, 1).toUpperCase() + name.slice(1, name.length)}</label>

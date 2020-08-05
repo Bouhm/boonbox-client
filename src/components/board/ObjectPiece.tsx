@@ -1,4 +1,4 @@
-import { ObjectType } from '../toolbar/ObjectButton';
+import { ObjectType } from '../sidebar/ObjectButton';
 
 export type Position = {
   x: number;
