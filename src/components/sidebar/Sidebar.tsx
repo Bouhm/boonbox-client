@@ -3,7 +3,7 @@ import { connect, ConnectedProps } from 'react-redux';
 
 import { toggleSidebar } from '../../store/sidebar/actions';
 import { AppState } from '../App';
-import Tools from './Tools';
+import Tools from './tools/Tools';
 import './Sidebar.css';
 
 export type SidebarProps = {

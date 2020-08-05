@@ -1,8 +1,9 @@
 import React, { ChangeEvent } from 'react';
+import { Value } from './useForm';
 
 type InputProps = {
   name: string;
-  value: string;
+  value: Value;
   label?: string;
   onChange(e: ChangeEvent<HTMLInputElement>): void;
 };
