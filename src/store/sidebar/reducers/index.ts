@@ -1,5 +1,5 @@
-import { SidebarProps } from "../../../components/sidebar/Sidebar";
-import { SidebarActions, SidebarActionTypes } from "../actions";
+import { SidebarProps } from '../../../components/sidebar/Sidebar';
+import { SidebarActions, SidebarActionTypes } from '../actions';
 
 export const initialState: SidebarProps = {
   isOpen: true,

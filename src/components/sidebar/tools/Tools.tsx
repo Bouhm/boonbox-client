@@ -1,11 +1,11 @@
-import React from "react";
-import { connect, ConnectedProps } from "react-redux";
+import React from 'react';
+import { connect, ConnectedProps } from 'react-redux';
 
-import { addPiece } from "../../../store/board/actions";
-import { AppState } from "../../App";
-import Input from "../../form/Input";
-import useForm from "../../form/useForm";
-import ObjectSelector from "./ObjectSelector";
+import { addPiece } from '../../../store/board/actions';
+import { AppState } from '../../App';
+import Input from '../../form/Input';
+import useForm from '../../form/useForm';
+import ObjectSelector from './ObjectSelector';
 
 type Props = ConnectedProps<typeof connector>;
 
@@ -15,14 +15,12 @@ const Tools = ({ addPiece }: Props) => {
   const { formData, handleInputChange } = useForm({ [bgInputName]: '', [objValName]: '' });
 
   const handleAddNewObject = () => {
-    const key =
-      '_' +
-      Math.random()
-        .toString(36)
-        .substr(2, 9);
-
     addPiece({
-      key,
+      key:
+        '_' +
+        Math.random()
+          .toString(36)
+          .substr(2, 9),
       data: formData[objValName],
       type: 'text',
     });

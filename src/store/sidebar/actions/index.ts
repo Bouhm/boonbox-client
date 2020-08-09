@@ -1,5 +1,3 @@
-import Sidebar from "../../../components/sidebar/Sidebar";
-
 export enum SidebarActions {
   ToggleSidebar = 'TOGGLE_SIDEBAR',
   ChangeTab = 'CHANGE_TAB',

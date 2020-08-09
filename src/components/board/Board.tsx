@@ -5,6 +5,7 @@ import { connect, ConnectedProps } from 'react-redux';
 
 import { removePiece, updatePiece } from '../../store/board/actions';
 import { AppState } from '../App';
+import { D10, D12, D20, D4, D6, D8 } from '../Icons';
 import _Moveable from './Moveable';
 import { IObjectPiece } from './ObjectPiece';
 
@@ -26,11 +27,13 @@ const Board = ({ pieces, updatePiece, removePiece }: Props) => {
   };
 
   const renderObjectPiece = (piece: IObjectPiece) => {
-    let content = <>{piece.data}</>;
+    let content: JSX.Element;
 
     switch (piece.type) {
       case 'image':
         content = <img src={piece.data} />;
+      case 'text':
+        content = <>{piece.data}</>;
         break;
     }
 
@@ -44,6 +47,7 @@ const Board = ({ pieces, updatePiece, removePiece }: Props) => {
         onBlur={handleLoseFocus}
       >
         {content}
+        <D20 />
       </div>
     );
   };

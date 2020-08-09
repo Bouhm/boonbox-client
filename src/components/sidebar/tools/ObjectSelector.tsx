@@ -1,8 +1,8 @@
-import "./ObjectSelector.css";
+import './ObjectSelector.css';
 
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
-import ObjectButton, { ObjectType, ObjectTypes } from "./ObjectButton";
+import ObjectButton, { ObjectType, ObjectTypes } from './ObjectButton';
 
 type ObjectSelectorProps = {
   handleAddNewObject(): void;
