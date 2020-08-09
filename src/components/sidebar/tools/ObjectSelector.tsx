@@ -1,15 +1,15 @@
-import './ObjectSelector.css';
+import "./ObjectSelector.css";
 
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
-import ObjectButton, { ObjectType, ObjectTypes } from './ObjectButton';
+import ObjectButton, { ObjectType, ObjectTypes } from "./ObjectButton";
 
 type ObjectSelectorProps = {
   handleAddNewObject(): void;
 };
 
 const ObjectSelector = ({ handleAddNewObject }: ObjectSelectorProps) => {
-  const [selectedObjectType, setSelectedObjectType] = useState<ObjectType | null>(null);
+  const [selectedObjectType, setSelectedObjectType] = useState<ObjectType>('text');
 
   const handleClickObjectButton = (objType: ObjectType) => {
     setSelectedObjectType(objType);

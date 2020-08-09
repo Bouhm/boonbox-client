@@ -1,7 +1,7 @@
-import React, { ReactNode } from 'react';
-import { act } from 'react-dom/test-utils';
+import React, { ReactNode } from "react";
+import { act } from "react-dom/test-utils";
 
-import { SidebarActionTypes } from '../../store/sidebar/actions';
+import { SidebarActionTypes } from "../../store/sidebar/actions";
 
 export interface ITab {
   label: string;
@@ -16,7 +16,6 @@ type TabContainerProps = {
 
 const TabContainer = ({ tabs, activeTab, onChange }: TabContainerProps) => {
   const handleClickTab = (e: React.MouseEvent) => {
-    console.log(e.currentTarget.getAttribute('data-index'));
     onChange(parseInt(e.currentTarget.getAttribute('data-index')!));
   };
 

@@ -1,8 +1,8 @@
-import Sidebar from '../../../components/sidebar/Sidebar';
+import Sidebar from "../../../components/sidebar/Sidebar";
 
 export enum SidebarActions {
-  ToggleSidebar,
-  ChangeTab,
+  ToggleSidebar = 'TOGGLE_SIDEBAR',
+  ChangeTab = 'CHANGE_TAB',
 }
 
 type ChangeTab = {

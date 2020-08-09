@@ -1,9 +1,9 @@
-import { CanvasProps } from '../../../components/canvas/Canvas';
+import { CanvasProps } from "../../../components/canvas/Canvas";
 
 export enum CanvasActions {
-  SetCanvas,
-  ChangeBackground,
-  SelectColor,
+  SetCanvas = 'SET_CANVAS',
+  ChangeBackground = 'CHANGE_BACKGROUND',
+  SelectColor = 'SELECT_COLOR',
 }
 
 type SetCanvas = {

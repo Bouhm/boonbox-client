@@ -3,10 +3,10 @@ import { IObjectPiece } from "../../../components/board/ObjectPiece";
 import { CanvasProps } from "../../../components/canvas/Canvas";
 
 export enum BoardActions {
-  SetBoard,
-  AddPiece,
-  RemovePiece,
-  UpdatePiece,
+  SetBoard = 'SET_BOARD',
+  AddPiece = 'ADD_PIECE',
+  RemovePiece = 'REMOVE_PIECE',
+  UpdatePiece = 'UPDATE_PIECE',
 }
 
 type SetBoard = {
