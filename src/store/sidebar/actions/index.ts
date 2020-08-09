@@ -1,13 +1,28 @@
+import Sidebar from '../../../components/sidebar/Sidebar';
+
 export enum SidebarActions {
   ToggleSidebar,
+  ChangeTab,
 }
+
+type ChangeTab = {
+  type: SidebarActions.ChangeTab;
+  payload: number;
+};
 
 type ToggleSidebar = {
   type: SidebarActions.ToggleSidebar;
   payload: boolean;
 };
 
-export type SidebarActionTypes = ToggleSidebar;
+export type SidebarActionTypes = ChangeTab | ToggleSidebar;
+
+export const changeTab = (tabIndex: number): SidebarActionTypes => {
+  return {
+    type: SidebarActions.ChangeTab,
+    payload: tabIndex,
+  };
+};
 
 export const toggleSidebar = (isOpen: boolean): SidebarActionTypes => {
   return {
