@@ -36,7 +36,7 @@ const Board = ({ pieces, updatePiece, removePiece }: Props) => {
 
     return (
       <div
-        key={piece.key}
+        key={`object-${piece.key}`}
         id={piece.key}
         className="moveable"
         tabIndex={0}

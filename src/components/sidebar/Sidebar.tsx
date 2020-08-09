@@ -3,7 +3,7 @@ import './Sidebar.css';
 import React from 'react';
 import { connect, ConnectedProps } from 'react-redux';
 
-import { toggleSidebar } from '../../store/sidebar/actions';
+import { changeTab } from '../../store/sidebar/actions';
 import { AppState } from '../App';
 import TabContainer from './Tabs';
 import Tools from './tools/Tools';
@@ -21,12 +21,12 @@ export type SidebarProps = {
 
 type Props = SidebarProps & ConnectedProps<typeof connector>;
 
-const Sidebar = ({ isOpen = true, activeTab, toggleSidebar }: Props) => {
+const Sidebar = ({ isOpen = true, activeTab, changeTab }: Props) => {
   if (!isOpen) return null;
 
   return (
     <div className="Sidebar">
-      <TabContainer tabs={Tabs} activeTab={activeTab} />
+      <TabContainer tabs={Tabs} activeTab={activeTab} onChange={changeTab} />
       <Tools />
     </div>
   );
@@ -36,6 +36,6 @@ const mapStateToProps = (state: AppState) => {
   return { ...state.sidebar };
 };
 
-const connector = connect(mapStateToProps, { toggleSidebar });
+const connector = connect(mapStateToProps, { changeTab });
 
 export default connector(Sidebar);
