@@ -1,21 +1,14 @@
-export enum Dice {
-  D4 = 4,
-  D6 = 6,
-  D8 = 8,
-  D10 = 10,
-  D12 = 12,
-  D20 = 20,
-}
+export const DiceSides = [20, 4, 6, 8, 10, 12] as const;
 
-export const rollDice = (dice: Dice, useMedian = true) => {
+export const rollDice = (sides: number, useMedian = true) => {
   if (!useMedian) {
-    return Math.ceil(Math.random() * dice.valueOf());
+    return Math.ceil(Math.random() * sides.valueOf());
   }
 
   let rolls = [];
 
-  for (let i = 0; i < 2; i++) {
-    rolls.push(Math.ceil(Math.random() * dice.valueOf()));
+  for (let i = 0; i < 3; i++) {
+    rolls.push(Math.ceil(Math.random() * sides.valueOf()));
   }
 
   return rolls.sort((a, b) => b - a)[1];

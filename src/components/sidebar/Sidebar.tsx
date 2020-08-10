@@ -7,7 +7,7 @@ import { changeTab } from '../../store/sidebar/actions';
 import { AppState } from '../App';
 import TabContainer, { ITab } from './Tabs';
 import Tools from './tools/Tools';
-import { D4, D6, D8, D10, D12, D20 } from '../Icons';
+import Dices from './dnd/Dices';
 
 const Tabs: ITab[] = [
   {
@@ -18,12 +18,7 @@ const Tabs: ITab[] = [
     label: 'DnD',
     content: (
       <>
-        <D4 />
-        <D6 />
-        <D8 />
-        <D10 />
-        <D12 />
-        <D20 />
+        <Dices />
       </>
     ),
   },
@@ -37,7 +32,6 @@ export type SidebarProps = {
 type Props = SidebarProps & ConnectedProps<typeof connector>;
 
 const Sidebar = ({ isOpen = true, activeTab, changeTab }: Props) => {
-  console.log(activeTab);
   if (!isOpen) return null;
 
   return (
@@ -48,7 +42,6 @@ const Sidebar = ({ isOpen = true, activeTab, changeTab }: Props) => {
 };
 
 const mapStateToProps = (state: AppState) => {
-  console.log(state);
   return { ...state.sidebar };
 };
 

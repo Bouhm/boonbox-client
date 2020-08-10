@@ -1,16 +1,25 @@
 import React from 'react';
 import useForm from '../../form/useForm';
+import { DiceIcon } from '../../Icons';
+import { rollDice, DiceSides } from './DiceUtil';
 
 const Dices = () => {
-  const diceRadioName = 'dice';
   const medianCheckboxName = 'useMedian';
-  const { formData, handleInputChange } = useForm({ [diceRadioName]: '', [medianCheckboxName]: true });
+  const { formData, handleInputChange } = useForm({ [medianCheckboxName]: true });
 
-  const renderDiceOptions = () => {
-    return <div></div>;
+  const handleClickDice = (e: React.MouseEvent) => {
+    console.log(rollDice(parseInt(e.currentTarget.getAttribute('data-sides')!)));
   };
 
-  return <div className="Dices">{renderDiceOptions()}</div>;
+  const renderDiceButton = (sides: number) => {
+    return (
+      <div key={`dice-${sides}`} data-sides={sides} onClick={handleClickDice}>
+        <DiceIcon sides={sides} />
+      </div>
+    );
+  };
+
+  return <div className="Dices">{DiceSides.map(renderDiceButton)}</div>;
 };
 
 export default Dices;
