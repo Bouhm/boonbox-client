@@ -2,7 +2,6 @@ import React from 'react';
 import { connect, ConnectedProps } from 'react-redux';
 
 import { addPiece } from '../../../store/board/actions';
-import { AppState } from '../../App';
 import Input from '../../form/Input';
 import useForm from '../../form/useForm';
 import ObjectSelector from './ObjectSelector';

@@ -5,7 +5,6 @@ import { connect, ConnectedProps } from 'react-redux';
 
 import { removePiece, updatePiece } from '../../store/board/actions';
 import { AppState } from '../App';
-import { D10, D12, D20, D4, D6, D8 } from '../Icons';
 import _Moveable from './Moveable';
 import { IObjectPiece } from './ObjectPiece';
 
@@ -47,7 +46,6 @@ const Board = ({ pieces, updatePiece, removePiece }: Props) => {
         onBlur={handleLoseFocus}
       >
         {content}
-        <D20 />
       </div>
     );
   };

@@ -1,7 +1,6 @@
-import React, { ReactNode } from "react";
-import { act } from "react-dom/test-utils";
+import React, { ReactNode } from 'react';
 
-import { SidebarActionTypes } from "../../store/sidebar/actions";
+import { SidebarActionTypes } from '../../store/sidebar/actions';
 
 export interface ITab {
   label: string;

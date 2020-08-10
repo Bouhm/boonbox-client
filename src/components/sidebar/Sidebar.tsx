@@ -1,12 +1,13 @@
-import "./Sidebar.css";
+import './Sidebar.css';
 
-import React from "react";
-import { connect, ConnectedProps } from "react-redux";
+import React from 'react';
+import { connect, ConnectedProps } from 'react-redux';
 
-import { changeTab } from "../../store/sidebar/actions";
-import { AppState } from "../App";
-import TabContainer, { ITab } from "./Tabs";
-import Tools from "./tools/Tools";
+import { changeTab } from '../../store/sidebar/actions';
+import { AppState } from '../App';
+import TabContainer, { ITab } from './Tabs';
+import Tools from './tools/Tools';
+import { D4, D6, D8, D10, D12, D20 } from '../Icons';
 
 const Tabs: ITab[] = [
   {
@@ -15,7 +16,16 @@ const Tabs: ITab[] = [
   },
   {
     label: 'DnD',
-    content: null,
+    content: (
+      <>
+        <D4 />
+        <D6 />
+        <D8 />
+        <D10 />
+        <D12 />
+        <D20 />
+      </>
+    ),
   },
 ];
 
