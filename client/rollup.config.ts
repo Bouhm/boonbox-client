@@ -1,5 +1,6 @@
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
+import typescript from '@rollup/plugin-typescript';
 import { terser } from 'rollup-plugin-terser';
 
 // `npm run build` -> `production` is true
@@ -7,9 +8,9 @@ import { terser } from 'rollup-plugin-terser';
 const production = !process.env.ROLLUP_WATCH;
 
 export default {
-  input: 'src/main.js',
+  input: './src/index.tsx',
   output: {
-    file: 'public/bundle.js',
+    file: './dist/bundle.js',
     format: 'iife', // immediately-invoked function expression — suitable for <script> tags
     sourcemap: true,
   },
@@ -17,5 +18,8 @@ export default {
     resolve(), // tells Rollup how to find date-fns in node_modules
     commonjs(), // converts date-fns to ES modules
     production && terser(), // minify, but only in production
+    typescript({
+      typescript: require('typescript'),
+    }),
   ],
 };

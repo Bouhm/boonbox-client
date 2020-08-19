@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-import { connect, ConnectedProps } from 'react-redux';
+import { connect } from 'react-redux';
 import { AppState } from '../App';
 
 import { Position } from '../board/ObjectPiece';
@@ -11,9 +11,7 @@ export type CanvasProps = {
   color?: string;
 };
 
-type Props = CanvasProps & ConnectedProps<typeof connector>;
-
-const Canvas = ({ bgImgUrl, color = '#000' }: CanvasProps) => {
+const Canvas = ({ color = '#000' }: CanvasProps) => {
   const width = window.innerWidth;
   const height = window.innerHeight;
 

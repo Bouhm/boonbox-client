@@ -6,22 +6,21 @@
     "noImplicitThis": true,
     "strictNullChecks": true,
     "noImplicitReturns": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "noEmit": true,
+    "jsx": "react",
     "outDir": "dist",
     "declaration": true,
-    "lib": [
-      "dom",
-      "es2015",
-      "es2016",
-      "es2017",
-      "es2018",
-      "es2019",
-      "es2020"
-    ]
+    "lib": ["dom", "es2015", "es2016", "es2017", "es2018", "es2019", "es2020"]
   },
-  "include": [
-    "src/**/*"
-  ],
-  "exclude": [
-    "node_modules"
-  ]
+  "include": ["src"],
+  "exclude": ["node_modules"]
 }

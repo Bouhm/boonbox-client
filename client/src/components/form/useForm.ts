@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 
-export type Value = any;
+export type Value = string | number;
 
-const useForm = (initialState = {}) => {
+export const useForm = (initialState = {}) => {
   const [formData, setFormData] = useState<{ [name: string]: Value }>(initialState);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
