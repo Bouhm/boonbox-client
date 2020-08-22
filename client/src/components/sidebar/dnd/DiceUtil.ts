@@ -7,7 +7,7 @@ export const rollDice = (sides: number, useMedian = true) => {
     return Math.ceil(Math.random() * sides.valueOf());
   }
 
-  let rolls = [];
+  const rolls = [];
 
   // Roll three times
   for (let i = 0; i < 3; i++) {

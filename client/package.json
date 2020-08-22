@@ -4,8 +4,8 @@
   "main": "./src/index.tsx",
   "scripts": {
     "test": "jest",
-    "build": "rollup -c rollup.config.ts",
-    "watch": "rollup -cw rollup.config.ts",
+    "build": "rollup -c",
+    "watch": "rollup -cw",
     "lint": "eslint . --ext .ts"
   },
   "dependencies": {

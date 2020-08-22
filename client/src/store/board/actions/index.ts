@@ -1,6 +1,5 @@
-import { BoardProps } from "../../../components/board/Board";
-import { IObjectPiece } from "../../../components/board/ObjectPiece";
-import { CanvasProps } from "../../../components/canvas/Canvas";
+import { BoardProps } from '../../../components/board/Board';
+import { IObjectPiece } from '../../../components/board/ObjectPiece';
 
 export enum BoardActions {
   SetBoard = 'SET_BOARD',

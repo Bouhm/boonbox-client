@@ -1,11 +1,12 @@
 import React from 'react';
-import useForm from '../../form/useForm';
+
+// import useForm from '../../form/useForm';
 import { DiceIcon } from '../../Icons';
-import { rollDice, DiceSides } from './DiceUtil';
+import { DiceSides, rollDice } from './DiceUtil';
 
 const Dices = () => {
-  const medianCheckboxName = 'useMedian';
-  const { formData, handleInputChange } = useForm({ [medianCheckboxName]: true });
+  // const medianCheckboxName = 'useMedian';
+  // const { formData, handleInputChange } = useForm({ [medianCheckboxName]: true });
 
   const handleClickDice = (e: React.MouseEvent) => {
     console.log(rollDice(parseInt(e.currentTarget.getAttribute('data-sides')!)));

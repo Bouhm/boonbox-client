@@ -20,7 +20,7 @@ const Tools = ({ addPiece }: Props) => {
         Math.random()
           .toString(36)
           .substr(2, 9),
-      data: formData[objValName],
+      data: formData[objValName] as string,
       type: 'text',
     });
   };

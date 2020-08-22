@@ -9,7 +9,7 @@ type ObjectSelectorProps = {
 };
 
 const ObjectSelector = ({ handleAddNewObject }: ObjectSelectorProps) => {
-  const [selectedObjectType, setSelectedObjectType] = useState<ObjectType>('text');
+  const [, setSelectedObjectType] = useState<ObjectType>('text');
 
   const handleClickObjectButton = (objType: ObjectType) => {
     setSelectedObjectType(objType);
